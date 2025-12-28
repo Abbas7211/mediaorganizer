@@ -42,8 +42,7 @@ Android SDK Build-Tools 36.1 and download:
 
 - Scroll down to NDK and download:
 
-27.0.12077973
-26.3.11579264
+27.0.12077973 and 26.3.11579264
 
 - Scroll down to Android SDK Command-line Tools and download:
 
