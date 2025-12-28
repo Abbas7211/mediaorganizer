@@ -1,8 +1,4 @@
-# mediaorganizer
-
-Media Organizer App.
-
-## Getting Started
+# Media Organizer App.
 
 This project is a starting point for a Flutter application.
 
