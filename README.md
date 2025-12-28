@@ -11,11 +11,10 @@ Make sure to have JDK17 or Upper Version installed To run the app in flutter:
 To make sure everything in place when downloading and opening the project folder, Go to:
 
 Files -> setting -> plugins -> and search for:
-Dart 243.26753.1 version
-Flutter 86.0.1 version
+Dart 
+Flutter
 
-Or newer version.
-
+And download them
 ##
 - Make sure the app detect the JDK17, Go to:
 
@@ -23,9 +22,10 @@ File -> setting -> Build, Execution, Deployment -> Gradle
 
 - Set it to C:/Program Files/Eclipse Adoptium/jdk-17.0.17.10-hotspot
 
-##
 If you download it from the link above or set it where you have Your JDK.
 
+##
+Then go to:
 File -> settings -> Language & Frameworks -> Android SDK ->
 
 - SDK platforms :
@@ -46,20 +46,32 @@ Android SDK Build-Tools 36.1 and download:
 
 19.0 Version
 
-- Scroll down to CMake and download:
+- Scroll down to Make and download:
 
 3.22.1 version
 
 ##
-Then open the terminal inside the app and type:
+For Flutter and Android Studio downloading:
+- [Android Studio](https://developer.android.com/studio)
+- [Flutter Installer](https://docs.flutter.dev/install/manual)
 
-flutter clean, 
-flutter pub get, 
-flutter run
+After Downloading Flutter and extract the file go to:
 
-Make sure to download S23 Ultra as a Simulator as this project is done using it.   
+- File -> settings -> Language & Frameworks -> Dart
+- Enable Dart support and chose Dart SDK Path:
+
+the flutter file (Flutter\bin\cache\dart.sdk)
+
+///////////
+
+Remove SDK update check and check Th project 'mediaorganizer'
 
 ##
-For Flutter downloading:
-- [Flutter](https://docs.flutter.dev/install/manual)
+Then open the terminal inside the app and type:
 
+flutter clean,
+flutter pub get,
+flutter run
+
+or just run the app and it will do the job...
+Make sure to download S23 Ultra as a Simulator as this project is done using it.   
