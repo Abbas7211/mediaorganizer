@@ -19,7 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final SyncService _sync = SyncService();
 
   bool _busy = false;
-  String? _busyAction; // which button is running (for per-button spinner)
+  String? _busyAction;
 
   void _snack(String msg) {
     if (!mounted) return;
@@ -197,7 +197,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ✅ Account row: email + Logout/Login on right
+                // email + Logout/Login
                 _accountTile(
                   loggedIn: loggedIn,
                   email: email,
@@ -233,14 +233,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       : () => _runBusy('retrieve', () async {
                     await _sync.retrieveAll(user.uid);
 
-                    // ✅ refresh UI after pulling data into Hive
+                    // refresh UI after pulling data into Hive
                     await downloadManager.loadFromHive();
                     await downloadManager.loadStudioFromHive();
                     _snack('Data retrieved');
                   }),
                 ),
 
-                // ✅ Delete Firebase Data (cloud wipe)
+                // Delete Firebase Data (cloud wipe)
                 _settingsButton(
                   label: 'Delete Firebase Data',
                   actionKey: 'deleteCloud',

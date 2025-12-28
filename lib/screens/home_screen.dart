@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         MaterialPageRoute(builder: (_) => const SettingsScreen()),
       );
     }
-    // index == 0 is Home, do nothing (already here)
+    // index == 0 is Home, do nothing
   }
 
   void _openMediaList() {
@@ -75,10 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 30),
-
-              // Banner (replaces Welcome text area)
               const _HomeBanner(imagePath: _bannerPath),
-
               const SizedBox(height: 24),
 
               // Search / paste URL bar

@@ -104,7 +104,7 @@ class _MediaListScreenState extends State<MediaListScreen> {
     });
   }
 
-  // ---------- back handling (fixes “exit app” issue) ----------
+  // ---------- back handling ----------
   void _handleBack() {
     if (_selectMode) {
       _clearSelection();
@@ -388,10 +388,9 @@ class _MediaListScreenState extends State<MediaListScreen> {
       ),
     );
 
-// ✅ dismissed => do nothing
+// dismissed
     if (!mounted) return;
     if (chosen == null && Navigator.of(context).canPop() == false) {} // ignore
-// better:
     if (chosen == null) {
       final confirmRoot = await showDialog<bool>(
         context: context,
@@ -411,8 +410,6 @@ class _MediaListScreenState extends State<MediaListScreen> {
 
       if (confirmRoot != true) return;
     }
-
-// now chosen is either folderId OR null (confirmed root)
     await downloadManager.moveLibraryItemsToFolder(_selectedItems, chosen);
     _clearSelection();
   }
@@ -656,8 +653,6 @@ class _MediaListScreenState extends State<MediaListScreen> {
                   ),
 
                   const SizedBox(height: 10),
-
-                  // Breadcrumb (under search)
                   Align(
                     alignment: Alignment.centerLeft,
                     child: InkWell(
@@ -699,7 +694,7 @@ class _MediaListScreenState extends State<MediaListScreen> {
 
                   const SizedBox(height: 12),
 
-                  // Sort bar (matches Favorites style)
+                  // Sort bar
                   _sortBar(),
 
                   const SizedBox(height: 14),

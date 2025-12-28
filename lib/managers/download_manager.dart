@@ -318,7 +318,7 @@ class DownloadManager extends ChangeNotifier {
       final lib = LibraryItem(
         id: newId,
         title: st.title,
-        filePath: st.filePath, // keep file where it is (fast, safe)
+        filePath: st.filePath,
         createdAt: st.createdAt,
         thumbnailPath: st.thumbnailPath,
         url: st.sourceUrl,
@@ -328,7 +328,6 @@ class DownloadManager extends ChangeNotifier {
 
       await libraryBox.put(lib.id, lib);
 
-      // remove from Studio records (this is a MOVE)
       await studioBox.delete(st.id);
     }
 

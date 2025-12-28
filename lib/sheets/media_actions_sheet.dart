@@ -29,7 +29,7 @@ Future<void> showMediaActionsSheet(BuildContext context, LibraryItem item) async
             ),
             const SizedBox(height: 8),
 
-            // AI Features (replaces "Change name")
+            // AI Features
             ListTile(
               leading: const Icon(Icons.auto_awesome),
               title: const Text('AI Features'),
@@ -42,7 +42,7 @@ Future<void> showMediaActionsSheet(BuildContext context, LibraryItem item) async
             ),
             const Divider(height: 1),
 
-            // Favorite toggle (replaces Delete inside the sheet)
+            // Favorite toggle
             ListTile(
               leading: Icon(
                 item.isFavorite ? Icons.favorite : Icons.favorite_border,
@@ -102,7 +102,7 @@ Future<void> showMediaActionsSheet(BuildContext context, LibraryItem item) async
             ),
             const Divider(height: 1),
 
-            // View on platform (opens BrowserScreen)
+            // Opens BrowserScreen
             ListTile(
               leading: const Icon(Icons.open_in_new),
               title: Text('View on ${item.platform}'),

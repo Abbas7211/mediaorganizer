@@ -8,7 +8,7 @@ import '../core/history_notifier.dart';
 import '../hive/boxes.dart';
 import '../managers/download_manager.dart';
 
-// Shared history list (global, like your original)
+// Shared history list
 final List<String> searchHistory = [];
 
 void addToHistory(String query) {
@@ -49,7 +49,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
 
 
 
-  // Keep what the user typed while focused.
+  // Keep what the user typed
   String _lastUserInput = '';
 
   bool _looksLikeMediaFile(String url) {
@@ -103,7 +103,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
   void initState() {
     super.initState();
 
-    // history init + notifier listener
+    // history notifier listener
     _loadHistoryFromHive();
     _historyListener = () => _loadHistoryFromHive();
     HistoryNotifier.I.revision.addListener(_historyListener);
@@ -136,7 +136,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
             await _refreshNavState();
           },
           onUrlChange: (change) async {
-            // Same rule: never overwrite while focused
+            // never overwrite while focused
             if (!_focusNode.hasFocus) {
               _urlController.text = _cleanDisplayUrl(change.url);
               _urlController.selection = TextSelection.collapsed(offset: _urlController.text.length);
@@ -161,7 +161,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
         // keep what user had typed
         _lastUserInput = _urlController.text;
 
-        // select all for fast replace
+        // select all
         _urlController.selection = TextSelection(
           baseOffset: 0,
           extentOffset: _urlController.text.length,
@@ -457,20 +457,14 @@ class _BrowserScreenState extends State<BrowserScreen> {
       child: Scaffold(
         backgroundColor: kBgColor,
         resizeToAvoidBottomInset: true,
-
-        // ✅ fixed bottom bar (no more manual Positioned)
         bottomNavigationBar: _bottomBar(),
 
         body: SafeArea(
           child: Column(
             children: [
-              // ✅ fixed top bar (no more manual Positioned)
               _topBar(),
-
-              // ✅ history dropdown under top bar
               if (_showHistory) _buildHistoryDropdown(),
 
-              // ✅ web area
               Expanded(
                 child: Stack(
                   children: [
@@ -479,9 +473,6 @@ class _BrowserScreenState extends State<BrowserScreen> {
                       child: WebViewWidget(controller: _webController),
                     ),
 
-                    // ✅ IMPORTANT:
-                    // When keyboard is open / URL field focused,
-                    // first scroll OR tap dismisses input, and blocks web scrolling until dismissed.
                     if (_focusNode.hasFocus || keyboardOpen)
                       Positioned.fill(
                         child: GestureDetector(

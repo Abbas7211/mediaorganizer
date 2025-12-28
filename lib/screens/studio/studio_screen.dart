@@ -271,14 +271,9 @@ class _StudioScreenState extends State<StudioScreen> {
       ),
     );
 
-    // If user dismisses by tapping outside / swipe down -> treat as cancel
+    // If user dismisses by tapping outside / swipe down
     if (res == null) {
-      // NOTE: res==null can also be Media Root (intentional).
-      // We need a way to detect dismiss. We can’t directly.
-      // So we will NOT treat null as cancel here.
-      // Cancel handling will be done by checking `mounted` + adding a confirm step in caller.
     }
-
     return res;
   }
 
@@ -299,7 +294,6 @@ class _StudioScreenState extends State<StudioScreen> {
             ListTile(
               leading: const Icon(Icons.home_outlined),
               title: const Text('Root'),
-              // IMPORTANT: Root now means "Media List Root"
               onTap: () => Navigator.pop(ctx, 'MEDIA_ROOT'),
             ),
             const Divider(height: 1),
@@ -316,7 +310,7 @@ class _StudioScreenState extends State<StudioScreen> {
     // dismissed -> do nothing
     if (choice == null) return;
 
-    // Root => move to Media List Root
+    // Move to Media List Root
     if (choice == 'MEDIA_ROOT') {
       await downloadManager.moveStudioItemsToMediaListFolder(
         items: items,
@@ -326,16 +320,11 @@ class _StudioScreenState extends State<StudioScreen> {
       return;
     }
 
-    // Move to Media List => open folder picker
+    // Move to Media List, open folder picker
     if (choice == moveToMediaList) {
-      // We want Media Root to work too, so null is VALID here.
-      // But we also must avoid "dismiss => moves".
-      // Solution: If sheet dismissed, `picked` will be null as well.
-      // We'll add a confirmation dialog when picked == null.
-
       final picked = await _pickMediaFolderForMove();
 
-      // If user picked a folder id => move directly
+      // If user picked a folder id, move directly
       if (picked != null) {
         await downloadManager.moveStudioItemsToMediaListFolder(
           items: items,
@@ -345,8 +334,6 @@ class _StudioScreenState extends State<StudioScreen> {
         return;
       }
 
-      // picked == null: could be Media Root OR dismiss.
-      // Ask a quick confirm to prevent accidental move.
       if (!mounted) return;
       final confirmRoot = await showDialog<bool>(
         context: context,
@@ -601,7 +588,7 @@ class _StudioScreenState extends State<StudioScreen> {
 
                   const SizedBox(height: 12),
 
-                  // Sort bar (matches Favorites)
+                  // Sort bar
                   _sortBar(),
 
                   const SizedBox(height: 14),

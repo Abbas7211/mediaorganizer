@@ -94,8 +94,6 @@ class SyncService {
             'url': item.url,
             'isFavorite': item.isFavorite,
             'folderId': item.folderId,
-            // NOTE: do NOT sync filePath/thumbnailPath (device-specific).
-            // Re-download on another phone using url (Option A).
           },
           SetOptions(merge: true),
         );
@@ -124,7 +122,7 @@ class SyncService {
       }
     }
 
-    // 2) items metadata -> create/merge placeholders
+    // 2) items metadata, create/merge placeholders
     final itemsSnap = await _itemsCol(uid).get();
     for (final doc in itemsSnap.docs) {
       final d = doc.data();
@@ -150,7 +148,6 @@ class SyncService {
           ..createdAt = createdAt;
         await existing.save();
       } else {
-        // Placeholder: no file on this device (Option A)
         final placeholder = LibraryItem(
           id: id,
           title: title,

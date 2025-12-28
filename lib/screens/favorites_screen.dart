@@ -318,10 +318,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       ),
     );
 
-// ✅ dismissed => do nothing
     if (!mounted) return;
     if (chosen == null && Navigator.of(context).canPop() == false) {} // ignore
-// better:
     if (chosen == null) {
       final confirmRoot = await showDialog<bool>(
         context: context,
@@ -342,7 +340,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       if (confirmRoot != true) return;
     }
 
-// now chosen is either folderId OR null (confirmed root)
     await downloadManager.moveLibraryItemsToFolder(_selectedItems, chosen);
     _clearSelection();
   }
@@ -524,7 +521,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     ),
                   ),
 
-                  // Bottom selection actions (same as Media List)
+                  // Bottom selection actions
                   if (_selectMode && _selectedCount > 0)
                     SafeArea(
                       child: Container(
