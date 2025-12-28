@@ -20,12 +20,14 @@ Flutter 86.0.1 version
 
 Or newer version.
 
+##
 - Make sure the app detect the JDK17, Go to:
 
 File -> setting -> Build, Execution, Deployment -> Gradle
 
 - Set it to C:/Program Files/Eclipse Adoptium/jdk-17.0.17.10-hotspot
 
+##
 If you download it from the link above or set it where you have Your JDK.
 
 File -> settings -> Language & Frameworks -> Android SDK ->
@@ -52,6 +54,7 @@ Android SDK Build-Tools 36.1 and download:
 
 3.22.1 version
 
+##
 Then open the terminal inside the app and type:
 
 flutter clean, 
