@@ -52,4 +52,10 @@ Android SDK Build-Tools 36.1 and download:
 
 3.22.1 version
 
+Then open the terminal inside the app and type:
 
+flutter clean, 
+flutter pub get, 
+flutter run
+
+Make sure to download S23 Ultra as a Simulator as this project is done using it.
