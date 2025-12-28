@@ -10,7 +10,7 @@ A few resources to get you started For This app Project:
 
 Make sure to have JDK17 or Upper Version installed To run the app in flutter:
 - [Temurin® JDK: JDK 17 - LTS](https://adoptium.net/en-GB/temurin/releases?version=17&os=any&arch=any)
-
+##
 
 To make sure everything in place when downloading and opening the project folder, Go to:
 
