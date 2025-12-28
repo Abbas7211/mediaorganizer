@@ -57,4 +57,9 @@ flutter clean,
 flutter pub get, 
 flutter run
 
-Make sure to download S23 Ultra as a Simulator as this project is done using it.
+Make sure to download S23 Ultra as a Simulator as this project is done using it.   
+
+##
+For Flutter downloading:
+- [Flutter](https://docs.flutter.dev/install/manual)
+
