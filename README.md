@@ -37,19 +37,20 @@ Make sure you use Android 15.0 API level 35
 - SDK Tools:
 Android SDK Build-Tools 36.1 and download:
 
-36.0.0 Version
-35.0.1 Version
-34.0.0 Version
+36.0.0 Version , 35.0.1 Version , and 34.0.0 Version
 
 
 - Scroll down to NDK and download:
+
 27.0.12077973
 26.3.11579264
 
 - Scroll down to Android SDK Command-line Tools and download:
+
 19.0 Version
 
 - Scroll down to CMake and download:
+
 3.22.1 version
 
 
